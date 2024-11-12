@@ -12,7 +12,7 @@ const OrderForm = () => {
   const [total, setTotal] = useState(0);
 
   const calculateTotal = (values) => {
-    const calendar = (values?.calendar?.quantity || 0) * 800;
+    const calendar = (values?.calendar?.quantity || 0) * 699;
     const polaroid = (values?.polaroid?.quantity || 0) * 100;
     const shipping = 60;
     const total = calendar + polaroid;
@@ -58,7 +58,7 @@ const OrderForm = () => {
           polaroid: { quantity: 0, signed: false },
         }}
       >
-        <Title level={3}>2025年 Sheena熙蒳 桌曆預購表單</Title>
+        <Title level={3}>2025年 Sheena熙蒳 桌曆預購表</Title>
         <Space direction='vertical' className='mb-2'>
           <Text strong>本次活動將有 10% 作為公益款項</Text>
           <Text>699/本</Text>
