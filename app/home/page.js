@@ -1,8 +1,9 @@
 'use client';
 
-import { Table } from 'antd';
-import { useState, useEffect } from 'react';
+import { Card, Col, Row, Statistic, Table } from 'antd';
 import { collection, getDocs } from 'firebase/firestore';
+import { ceil, sumBy } from 'lodash-es';
+import { useEffect, useState } from 'react';
 import { db } from '/firebase';
 
 const columns = [
@@ -73,6 +74,7 @@ const columns = [
 
 const Page = () => {
   const [data, setData] = useState([]);
+  const totalSum = sumBy(data, 'total') || 0;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,8 +90,26 @@ const Page = () => {
     fetchData();
   }, []);
   return (
-    <div>
-      <Table columns={columns} dataSource={data} />
+    <div className='bg-white min-h-screen p-10'>
+      <Table bordered columns={columns} dataSource={data} />
+
+      <Row gutter={16}>
+        <Col span={4}>
+          <Card bordered={false}>
+            <Statistic
+              title='Total'
+              value={totalSum}
+              valueStyle={{ color: '#3f8600' }}
+              prefix='$'
+            />
+          </Card>
+        </Col>
+        <Col span={4}>
+          <Card bordered={false}>
+            <Statistic title='Fee (8%)' value={ceil(totalSum * 0.08)} prefix='$' />
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 };
