@@ -59,14 +59,14 @@ const OrderForm = () => {
           polaroid: { quantity: 0, signed: false },
         }}
       >
-        <Title level={3}>2025年 Sheena熙蒳 桌曆預購表</Title>
+        <Title level={3}>{new Date().getFullYear() + 1}年 Sheena熙蒳 桌曆預購表</Title>
         <Space direction='vertical' className='mb-2'>
           <Text strong>本次活動將有 10% 作為公益款項</Text>
           <Text>799/本</Text>
           <Text> 加購拍立得(4款隨機) $100/張</Text>
           <Text type='danger'>玉山銀行 808 0370979124140</Text>
           <Text>只接受轉帳 (轉帳後告知查帳) </Text>
-          <Text>滿兩千免運 可訂購時間 即日 ~ 11 月底 預計 12 月開始出貨</Text>
+          <Text>滿兩千免運 預購即日起-12/20 隨後出貨</Text>
         </Space>
 
         <div className='flex gap-4'>
@@ -143,6 +143,15 @@ const OrderForm = () => {
             <Input maxLength={5} />
           </Form.Item>
         </div>
+
+        <Form.Item className='mb-2 font-bold' name='note' label='備註'>
+          <Input.TextArea
+            rows={4}
+            maxLength={30}
+            placeholder='如有其他需求或備註，請在此填寫'
+            showCount
+          />
+        </Form.Item>
 
         {/* 總金額顯示 */}
         <div className='text-right mb-6'>
