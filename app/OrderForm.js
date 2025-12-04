@@ -144,7 +144,7 @@ const OrderForm = () => {
           </Form.Item>
         </div>
 
-        <Form.Item className='mb-2 font-bold' name='note' label='備註'>
+        <Form.Item className='mb-5 font-bold' name='note' label='備註'>
           <Input.TextArea
             rows={4}
             maxLength={30}
