@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Form, Input, InputNumber, Radio, Space, Typography, Button, Card, message } from 'antd';
 import { db } from '/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { COLLECTION_NAME } from './constants';
 
 const { Title, Text } = Typography;
 
@@ -12,7 +13,7 @@ const OrderForm = () => {
   const [total, setTotal] = useState(0);
 
   const calculateTotal = (values) => {
-    const calendar = (values?.calendar?.quantity || 0) * 699;
+    const calendar = (values?.calendar?.quantity || 0) * 799;
     const polaroid = (values?.polaroid?.quantity || 0) * 100;
     const shipping = 60;
     const total = calendar + polaroid;
@@ -34,7 +35,7 @@ const OrderForm = () => {
         createdAt: serverTimestamp(),
         havePaid: false,
       };
-      await addDoc(collection(db, 'sheena-202411-calendar'), orderData);
+      await addDoc(collection(db, COLLECTION_NAME), orderData);
 
       message.success('感謝您的訂購！', 4);
       form.resetFields();
@@ -61,7 +62,7 @@ const OrderForm = () => {
         <Title level={3}>2025年 Sheena熙蒳 桌曆預購表</Title>
         <Space direction='vertical' className='mb-2'>
           <Text strong>本次活動將有 10% 作為公益款項</Text>
-          <Text>699/本</Text>
+          <Text>799/本</Text>
           <Text> 加購拍立得(4款隨機) $100/張</Text>
           <Text type='danger'>玉山銀行 808 0370979124140</Text>
           <Text>只接受轉帳 (轉帳後告知查帳) </Text>

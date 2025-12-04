@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { db } from '/firebase';
 import dayjs from 'dayjs';
 import { Stamp } from 'lucide-react';
+import { COLLECTION_NAME } from '../constants';
 
 const columns = [
   {
@@ -86,7 +87,7 @@ const columns = [
           onDoubleClick={async (e) => {
             e.stopPropagation();
             try {
-              const docRef = doc(db, 'sheena-202411-calendar', record.id);
+              const docRef = doc(db, COLLECTION_NAME, record.id);
               await updateDoc(docRef, {
                 havePaid: !paid,
               });
@@ -117,7 +118,7 @@ const columns = [
           onDoubleClick={async (e) => {
             e.stopPropagation();
             try {
-              const docRef = doc(db, 'sheena-202411-calendar', record.id);
+              const docRef = doc(db, COLLECTION_NAME, record.id);
               await updateDoc(docRef, {
                 haveSend: !send,
               });
@@ -147,7 +148,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const q = query(collection(db, 'sheena-202411-calendar'), orderBy('createdAt', 'desc'));
+        const q = query(collection(db, COLLECTION_NAME), orderBy('createdAt', 'desc'));
         const querySnapshot = await getDocs(q);
         const dataList = querySnapshot.docs.map((doc) => ({
           id: doc.id, // 從 doc 取得 id
