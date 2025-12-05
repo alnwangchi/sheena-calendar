@@ -31,6 +31,7 @@ const OrderForm = () => {
     try {
       const orderData = {
         ...values,
+        note: values.note || '',
         total,
         createdAt: serverTimestamp(),
         havePaid: false,
@@ -144,7 +145,7 @@ const OrderForm = () => {
           </Form.Item>
         </div>
 
-        <Form.Item className='mb-5 font-bold' name='note' label='備註'>
+        <Form.Item className='mb-5 font-bold' name='note' label='備註 (選填)'>
           <Input.TextArea
             rows={4}
             maxLength={30}

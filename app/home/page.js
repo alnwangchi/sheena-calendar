@@ -33,7 +33,14 @@ const columns = [
     dataIndex: 'bankCode',
     key: 'bankCode',
   },
-
+  {
+    title: '備註',
+    dataIndex: 'note',
+    key: 'note',
+    render: (note) => {
+      return note || '-';
+    },
+  },
   {
     title: '桌曆',
     dataIndex: ['calendar', 'quantity'],
