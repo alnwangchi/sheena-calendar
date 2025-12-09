@@ -220,7 +220,7 @@ const Page = () => {
         </Col>
         <Col span={4}>
           <Card bordered={false}>
-            <Statistic title='Fee (8%)' value={ceil(totalSum * 0.08)} prefix='$' />
+            <Statistic title='Fee (5%)' value={ceil(totalSum * 0.05)} prefix='$' />
           </Card>
         </Col>
       </Row>
